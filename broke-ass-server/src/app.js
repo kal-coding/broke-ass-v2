@@ -2,6 +2,7 @@ import 'dotenv/config';
 const { PORT } = process.env;
 import chalk  from 'chalk';
 import express from 'express';
+
 const app = express();
 
 app.get('/', (req, res) => res.send('Hello World!'));

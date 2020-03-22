@@ -102,6 +102,7 @@ public
 
 # Build output
 dist
+test
 
 #docker-volume
 postgres-data
