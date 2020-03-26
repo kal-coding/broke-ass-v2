@@ -1,12 +1,17 @@
 import 'dotenv/config';
-const { PORT } = process.env;
 import chalk  from 'chalk';
 import express from 'express';
+import 'reflect-metadata';
 
 const app = express();
 
+const { PORT } = process.env;
+
 app.get('/', (req, res) => res.send('Hello World!'));
 
+// Set up routes
+
+// App Start
 try {
     app.listen(PORT, () => console.log(`
     
@@ -14,6 +19,6 @@ try {
     
     `));
 } catch (error) {
-    logger.error(error, {}, 'Server crashed or failed to start');
+    console.error(error, {}, 'Server crashed or failed to start');
     process.exit(1);
 }
