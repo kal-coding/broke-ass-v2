@@ -1,6 +1,6 @@
 import { connectionConfig } from './database/connection';
 import 'dotenv/config';
-import chalk  from 'chalk';
+import { bloom } from './helpers/rose';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Request, Response } from 'express';
@@ -31,13 +31,8 @@ createConnection(connectionConfig)
     });
 
     // run app
-    app.listen(PORT, () =>
-      console.log(`
-
-            I live and breathe on ${chalk.green(PORT)}
+    app.listen(PORT, () => bloom(PORT));
     
-    `)
-    );
   })
   .catch(error => {
     console.error(error, {}, 'Server crashed or failed to start');
