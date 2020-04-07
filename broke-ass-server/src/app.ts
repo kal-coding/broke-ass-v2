@@ -1,6 +1,6 @@
 import { connectionConfig } from './database/connection';
 import 'dotenv/config';
-import { bloom } from './helpers/rose';
+import { bloom } from './misc/rose';
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Request, Response } from 'express';

@@ -1,0 +1,75 @@
+
+
+Notes handling transaction locks
+
+-- There are Optimistic and Pessimistic Locks 
+
+Optimistic locks uses an updatedat column to figure out whether or not you're dealing with the correct " version " of the row. 
+
+if it has been updated then it needs to wait for the last transaction to unlock itself. 
+
+
+This is pessimistic
+// When updating a row
+// Check if the transaction is locked 
+// If locked then try again after a random interval. 
+// if not locked then acquire the lock. 
+// Update the row
+// Release the lock
+
+
+
+In optimistic Locking 
+
+// When updating a row, it pulls the most recent data and saves the updatedAt column
+
+// After calculations, it pulls the updatedAt column again and checks to see if its it matches, 
+
+// if it still matches, then take the lock, update the records, and release the lock. 
+
+
+
+
+
+
+Pseudo for actions. 
+
+
+Create new transaction_detail
+
+UI 0.0 - User inputs data for a new transaction and sends it to the server. 
+
+// do validation for all data 
+
+// send it to server 
+{
+    price,
+    qty,
+    description,
+    imgs,
+    ...
+    ..
+    etc
+}
+ 
+API 1.0 hits endpoint /transaction/create 
+
+// Do validation for all data 
+
+// ? check if : 
+-- Images are attached
+-- Maps Location is attached
+-- Tags are attached
+-- Categories are attached
+
+> If yes then include in SQL Transaction. 
+> If no then ignore 
+
+
+// ask lock manager to lock wallet, 
+
+// lock manager sets a TTL of 5 seconds
+
+// update all tables required including balance. 
+
+// unlock table 

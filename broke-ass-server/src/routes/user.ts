@@ -1,6 +1,6 @@
 import { 
-  postGetAllAction,
-  postSaveAction 
+  userGetAllAction,
+  userSaveAction 
 } from '../controllers/user';
 
 /**
@@ -8,13 +8,13 @@ import {
  */
 export const UserRoutes = [
   {
-    path: '/posts',
+    path: '/users',
     method: 'get',
-    action: postGetAllAction
+    action: userGetAllAction
   },
   {
-    path: '/posts',
+    path: '/users',
     method: 'post',
-    action: postSaveAction
+    action: userSaveAction
   }
 ];

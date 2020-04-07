@@ -1,0 +1,43 @@
+Progress log - April 7th 2020
+
+-- Figured out with the help of a flow diagram what my "create tranaction" needs to look like 
+-- Essentially : 
+
+1. Create transaction
+
+2a. Create Details
+2a. Create Fees 
+
+3a. Create Txn Detail Tags
+3a. Create Txn Detail Categories
+3a. Create Txn Detail SubCategories
+...
+... 
++ whatever other details are involved
+
+SUCCESS! 
+
+
+SO. Since I figured that out, 
+1. I created the low level entities for Tags, Categories, SubCategories
+2. Created the Controllers
+3. Tied the Controllers to the Routers
+
+Technically to test the concurrency stuff i only needed to do two Entities.. but w/e 
+
+QUESTION : HOW DO I DO JOI VALIDATION?
+ANSWER : 
+1. You can add reqSchema, resSchema attributes to the route definitions 
+2, You can add the logic for JOI in the app level folder as middleware ... probably.. i donr really know yet. but thats my best guess goodluck. 
+
+Next steps :
+-- Create the connecting tables that resolves the m-m's
+----- Dont really know how to do that yet so figure that out. 
+
+-- Create the details table
+-- Create the fee table
+-- Create the txn table
+-- Create the txn Transaction that executes creating a single transaction. 
+
+-- Add Endpoints for " Update " 
+

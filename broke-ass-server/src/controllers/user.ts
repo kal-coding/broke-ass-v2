@@ -2,30 +2,29 @@ import { Request, Response } from 'express';
 import { getManager } from 'typeorm';
 import { User } from './../database/entities/User';
 
-// Loads all posts from the database.
+// Loads all users from the database.
 
-export async function postGetAllAction(request: Request, response: Response) {
+export async function userGetAllAction(request: Request, response: Response) {
+    // get a user repository to perform operations with post
+    const userRepository = getManager().getRepository(User);
 
-    // get a post repository to perform operations with post
-    const postRepository = getManager().getRepository(User);
+    // load a user by a given user id
+    const users = await userRepository.find();
 
-    // load a post by a given post id
-    const posts = await postRepository.find();
-
-    // return loaded posts
-    response.send(posts);
+    // return loaded users
+    response.send(users);
 }
 
-export async function postSaveAction(request: Request, response: Response) {
-    // get a post repository to perform operations with post
-    const postRepository = getManager().getRepository(User);
+export async function userSaveAction(request: Request, response: Response) {
+    // get a user repository to perform operations with user
+    const userRepository = getManager().getRepository(User);
 
-    // create a real post object from post json object sent over http
-    const newPost = postRepository.create(request.body);
+    // create a real user object from user json object sent over http
+    const newUser = userRepository.create(request.body);
 
-    // save received post
-    await postRepository.save(newPost);
+    // save received user
+    await userRepository.save(newUser);
 
-    // return saved post back
-    response.send(newPost);
+    // return saved user back
+    response.send(newUser);
 }
